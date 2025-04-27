@@ -1,7 +1,7 @@
 # Project Overview
 ![for project](https://github.com/user-attachments/assets/d03139f3-ecf7-4795-9369-215f63d1a81a)
 
-This project implements a simple ETL (Extract, Transform, Load) process. It uses the following technologies:
+## This project implements a simple ETL (Extract, Transform, Load) process. It uses the following technologies:
 
 -Python programming language
 
