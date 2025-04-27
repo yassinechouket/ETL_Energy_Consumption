@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: yassine
+      POSTGRES_PASSWORD: 98601006
+      POSTGRES_DB: energy_consumption
+    ports:
+      - "5433:5432"
+    restart: always
+    volumes:
+      - etl_energy_consumption:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "yassine", "-d", "energy_consumption"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  elt_python:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./elt.py:/app/elt.py
+    command: ["python", "/app/elt.py"]
+    restart: on-failure
+    environment:
+      - PYTHONPATH=/app
+
+volumes:
+  etl_energy_consumption:
