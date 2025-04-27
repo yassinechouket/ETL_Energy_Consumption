@@ -3,7 +3,7 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_USER: yassine
-      POSTGRES_PASSWORD: 98601006
+      POSTGRES_PASSWORD: ohhhyahhh
       POSTGRES_DB: energy_consumption
     ports:
       - "5433:5432"
